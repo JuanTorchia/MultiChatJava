@@ -40,7 +40,8 @@ public class ServerWorker extends Thread {
         while ( (line = reader.readLine()) != null) {
             String[] tokens = StringUtils.split(line);
             String cmd = tokens[0];
-            if ("quit".equalsIgnoreCase(cmd)) {
+            if ("logoff".equals(cmd) || "quit".equalsIgnoreCase(cmd)) {
+                handleLogoff();
                 break;
             } else if ("login".equalsIgnoreCase(cmd)) {
                 handleLogin(outputStream, tokens);
@@ -51,6 +52,18 @@ public class ServerWorker extends Thread {
             }
         }
 
+        clientSocket.close();
+    }
+
+    private void handleLogoff() throws IOException {
+        List<ServerWorker> workerList = server.getWorkerList();
+        // send other online users current user´s status
+        String onlineMsg = "offline  " + login + "\n";
+        for(ServerWorker worker : workerList) {
+            if (!login.equals(worker.getLogin())) {
+                worker.send(onlineMsg);
+            }
+        }
         clientSocket.close();
     }
 
