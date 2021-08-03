@@ -1,7 +1,7 @@
 # Multi Chat JAVA
 
 
-##Technical documentation
+## Technical documentation
 
 This Java APP is to make a CHAT with multiple users.
 We use ServerSocket class and Socket to make the connection, the use a Worker to handle multiple connections.
