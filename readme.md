@@ -28,7 +28,8 @@ We have User & Server for use the chat.
 
 3. Users communicate to another Users
 
-    * users can send direct messages to other users
+    * users can send direct messages to other users 
+    * users can send group messages (the groups messages work with a #)
     * users can broadcast messages
 
 
@@ -36,6 +37,17 @@ Commands that use for login or logoff:
 
     login <user> <password>
     logoff
+
+    msg <user> body....
+    guest: "msg jim Hello World" <--- sent
+    jim: "msg guest Hello World" <--- recv
+
+
+    #topic <--- chatroom / group chat 
+    join #topic
+    leave #topic
+    send msg #topic body---
+    recive msg #topic:<login> body ...
 
 
 ## Related Articles
