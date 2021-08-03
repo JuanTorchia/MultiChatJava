@@ -10,6 +10,7 @@ import java.util.Date;
 public class ServerWorker extends Thread {
 
     private final Socket clientSocket;
+    private String login = null;
 
     public ServerWorker(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -35,8 +36,11 @@ public class ServerWorker extends Thread {
         while ( (line = reader.readLine()) != null) {
             String[] tokens = StringUtils.split(line);
             String cmd = tokens[0];
-            if ("quit".equalsIgnoreCase(line)) {
+            if ("quit".equalsIgnoreCase(cmd)) {
                 break;
+            } else if ("login".equalsIgnoreCase(cmd)) {
+                handleLogin(outputStream, tokens);
+                
             } else {
                 String msg = "Unknown " + cmd + "\n";
                 outputStream.write(msg.getBytes());
@@ -44,5 +48,23 @@ public class ServerWorker extends Thread {
         }
 
         clientSocket.close();
+    }
+
+    private void handleLogin(OutputStream outputStream, String[] tokens) throws IOException {
+        if (tokens.length == 3) {
+            String login = tokens[1];
+            String passwords = tokens[2];
+
+            if (login.equals("guest") && passwords.equals("guest")) {
+                String msg = "Ok Login\n";
+                outputStream.write(msg.getBytes());
+                this.login = login;
+                System.out.println("User logged in successfully:  " + login);
+            } else {
+                String msg = "Error Login\n";
+                outputStream.write(msg.getBytes());
+
+            }
+        }
     }
 }
