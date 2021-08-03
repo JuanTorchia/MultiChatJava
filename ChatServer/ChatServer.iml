@@ -7,5 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="commons-lang3-3.12.0" level="project" />
+    <orderEntry type="library" name="logback-classic-1.2.3" level="project" />
+    <orderEntry type="library" name="logback-core-1.2.3" level="project" />
   </component>
 </module>
