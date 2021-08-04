@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-lang3-3.12.0 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ChatClient/src/lib/commons-lang3-3.12.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ChatClient/src/lib/logback-classic-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ChatClient/src/lib/logback-core-1.2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
